@@ -113,6 +113,14 @@ code {
     border-radius: 4px;
 }
 
+/* Example image inside command box */
+.command-box img.example-image {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-top: 12px;
+    border: 1px solid #4da3ff;
+}
+
 /* Footer */
 .footer {
     position: fixed;
@@ -141,9 +149,10 @@ code {
     <div id="info" class="section active">
         <div class="command-box">
             <h3>User Info</h3>
-            <p><code>W!i (user id)</code> — Displays detailed information about a specific user ID including account and server data.</p>
-            <p><code>W!cases</code> — Shows the most recent  cases in the server.</p>
-            <p><code>W!cases (user id)</code> — Shows all  cases for that user.</p>
+            <p><code>W!i (user id)</code> — Displays detailed information about a user.</p>
+            <p><code>W!cases</code> — Shows the most recent cases in the server.</p>
+            <p><code>W!cases (user id)</code> — Shows all cases for that user.</p>
+            <img class="example-image" src="example-user-info.png" alt="Example User Info">
         </div>
     </div>
 
@@ -151,13 +160,15 @@ code {
     <div id="warns" class="section">
         <div class="command-box">
             <h3>Warn a User</h3>
-            <p><code>W!warn (user id) ?r reason</code> — Issues a warning to a user warns are logged as cases keep that inmind .</p>
+            <p><code>W!warn (user id) ?r reason</code> — Issues a warning and logs it.</p>
+            <img class="example-image" src="example-warn.png" alt="Example Warn">
         </div>
 
         <div class="command-box">
             <h3>Edit a Warning</h3>
             <p>Use <code>W!cases</code> or <code>W!cases (user id)</code> to find the case ID.</p>
             <p><code>W!cases (case id) ?e ?r new reason</code> — Edits the reason of a warning/case.</p>
+            <img class="example-image" src="example-edit-warn.png" alt="Example Edit Warning">
         </div>
     </div>
 
@@ -165,7 +176,14 @@ code {
     <div id="timeout" class="section">
         <div class="command-box">
             <h3>Timeout a User</h3>
-            <p><code>W!timeout (user id) ?t TIME ?r reason</code> — Temporarily restricts a user from chatting for a set amount of time.</p>
+            <p><code>W!timeout (user id) ?t TIME ?r reason</code> — Temporarily restricts a user from chatting.</p>
+            <img class="example-image" src="example-timeout.png" alt="Example Timeout">
+        </div>
+
+        <div class="command-box">
+            <h3>Remove a Timeout</h3>
+            <p><code>W!delttimeout (user id)</code> — Removes a timeout.</p>
+            <img class="example-image" src="example-remove-timeout.png" alt="Example Remove Timeout">
         </div>
     </div>
 
@@ -173,21 +191,23 @@ code {
     <div id="ban" class="section">
         <div class="command-box">
             <h3>Ban a User</h3>
-            <p><code>W!ban (user id) ?r reason</code> — Permanently bans the user from the server.</p>
-            <p><code>W!hackban (user id)</code> — Bans a user even if they are not currently in the server.</p>
+            <p><code>W!ban (user id) ?r reason</code> — Permanently bans a user.</p>
+            <p><code>W!hackban (user id)</code> — Bans a user even if they are not in the server.</p>
+            <img class="example-image" src="example-ban.png" alt="Example Ban">
         </div>
 
         <div class="command-box">
             <h3>Unban a User</h3>
-            <p><code>W!unban (user id) ?r reason</code> — Removes a ban from a user allowing them to rejoin.</p>
+            <p><code>W!unban (user id) ?r reason</code> — Removes a ban.</p>
+            <img class="example-image" src="example-unban.png" alt="Example Unban">
         </div>
 
         <div class="command-box">
             <h3>Edit a Ban</h3>
-            <p>Bans cannot be directly edited.</p>
-            <p>You must unban and re-ban with a new reason:</p>
+            <p>Bans cannot be directly edited. Unban then re-ban with new reason:</p>
             <p><code>W!unban (user id) ?r reason</code></p>
             <p><code>W!ban (user id) ?r new reason</code></p>
+            <img class="example-image" src="example-edit-ban.png" alt="Example Edit Ban">
         </div>
     </div>
 
@@ -196,16 +216,19 @@ code {
         <div class="command-box">
             <h3>Mass Kick</h3>
             <p><code>W!kick USERID1 USERID2</code> — Kicks multiple users at once.</p>
+            <img class="example-image" src="example-mass-kick.png" alt="Example Mass Kick">
         </div>
 
         <div class="command-box">
             <h3>Mass Ban</h3>
             <p><code>W!ban USERID1 USERID2</code> — Bans multiple users at once.</p>
+            <img class="example-image" src="example-mass-ban.png" alt="Example Mass Ban">
         </div>
 
         <div class="command-box">
             <h3>Mass Timeout</h3>
             <p><code>W!timeout USERID1 USERID2 ?t TIME ?r reason</code> — Timeouts multiple users at once.</p>
+            <img class="example-image" src="example-mass-timeout.png" alt="Example Mass Timeout">
         </div>
     </div>
 
@@ -220,11 +243,9 @@ function showSection(id, button) {
     document.querySelectorAll('.section').forEach(section => {
         section.classList.remove('active');
     });
-
     document.querySelectorAll('.sidebar button').forEach(btn => {
         btn.classList.remove('active');
     });
-
     document.getElementById(id).classList.add('active');
     button.classList.add('active');
 }
