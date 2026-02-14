@@ -47,7 +47,6 @@ body {
     letter-spacing: 1px;
 }
 
-/* Sidebar buttons */
 .sidebar button {
     width: 100%;
     padding: 12px;
@@ -141,13 +140,17 @@ code {
 <body>
 
 <div class="sidebar">
+    <!-- CHEET SHEET GROUP -->
+    <h2>CHEET SHEET</h2>
+    <button onclick="showSection('cheet_reasons', this)">Reasons</button>
+    <button onclick="showSection('cheet_warns', this)">Warns</button>
+    <button onclick="showSection('cheet_bans', this)">Bans</button>
+    <button onclick="showSection('cheet_kicks', this)">Kicks</button>
+    <button onclick="showSection('cheet_timeouts', this)">Timeouts</button>
+
     <!-- COMMANDS GROUP -->
     <h2>COMMANDS</h2>
-    <button onclick="showSection('info', this)">User Info</button>
-    <button onclick="showSection('warns', this)">Warning and editing warns</button>
-    <button onclick="showSection('timeout', this)">Timeout</button>
-    <button onclick="showSection('ban', this)">Ban Commands</button>
-    <button onclick="showSection('mass', this)">Mass Actions</button>
+    <button class="active" onclick="showSection('all_commands', this)">All Commands</button>
 </div>
 
 <div class="content">
@@ -164,8 +167,7 @@ code {
     <div id="cheet_warns" class="section">
         <div class="command-box">
             <h3>Warns</h3>
-            <p><code>W!warn (user id) ?r reason</code> — Warn a user and log the case.</p>
-            <p><code>W!cases (case id) ?e ?r new reason</code> — Edit a warning reason.</p>
+            <p><code>W!warn (user id) ?r reason</code> — Warn a user and log it.</p>
         </div>
     </div>
 
@@ -174,14 +176,14 @@ code {
             <h3>Bans</h3>
             <p><code>W!ban (user id) ?r reason</code> — Permanently ban a user.</p>
             <p><code>W!hackban (user id)</code> — Ban user not in server.</p>
-            <p><code>W!unban (user id) ?r reason</code> — Remove ban.</p>
+            <p><code>W!unban (user id) ?r reason</code> — Remove a ban.</p>
         </div>
     </div>
 
     <div id="cheet_kicks" class="section">
         <div class="command-box">
             <h3>Kicks</h3>
-            <p><code>W!kick (user id)</code> — Remove a user from the server.</p>
+            <p><code>W!kick (user id)</code> — Kick a user from the server.</p>
         </div>
     </div>
 
@@ -193,51 +195,69 @@ code {
         </div>
     </div>
 
-    <!-- MAIN COMMANDS SECTIONS -->
-    <div id="info" class="section">
+    <!-- FULL COMMAND LIST -->
+    <div id="all_commands" class="section active">
         <div class="command-box">
-            <h3>User Info</h3>
-            <p><code>W!i (user id)</code> — Shows detailed user info.</p>
-            <p><code>W!cases</code> — Most recent cases.</p>
-        </div>
-    </div>
+            <h3>Discord Commands - Full List</h3>
+            <p>DISCORD COMANDS WHAT THEY DO how to use them<br>
+            ALL COMMANDS U WILL BE LEARNING WHAT THEY DO</p>
 
-    <div id="warns" class="section">
-        <div class="command-box">
-            <h3>Warn a User</h3>
-            <p><code>W!warn (user id) ?r reason</code> — Issue a warning.</p>
-        </div>
-    </div>
+            <p><code>W!i (user id)</code> — give the info of the user id</p>
+            <p><code>W!Cases</code> — shows the most recent cases</p>
+            <p><code>W!cases (user id)</code> — shows the users cases</p>
+            <p><code>W!ban (user id) ?R reason</code> — bans the user</p>
+            <p><code>W!Hackban (user id)</code> — bans the user without them being in the server</p>
+            <p><code>W!warn (user id)</code> — warns the user</p>
 
-    <div id="timeout" class="section">
-        <div class="command-box">
-            <h3>Timeout a User</h3>
-            <p><code>W!timeout (user id) ?t TIME ?r reason</code></p>
-        </div>
-        <div class="command-box">
-            <h3>Remove a Timeout</h3>
+            <hr>
+
+            <h3>BASIC COMMANDS</h3>
+            <p><code>W!i (Discord id)</code> — give info of user id</p>
+            <p><code>W!cases</code> — shows the most recent cases</p>
+            <p><code>W!cases (user id)</code> — shows the user's cases</p>
+            <p><code>W!warn (user id) ?r reason here</code></p>
+            <p><code>W!kick (user id)</code></p>
+            <p><code>W!timeout (USER ID) ?t ?r</code></p>
+
+            <hr>
+
+            <h3>HOW TO EDIT WARNS</h3>
+            <p>Two ways:</p>
+            <ol>
+                <li>W!cases — gives most recent cases at the top</li>
+                <li>W!case (user id) — gives that user's cases</li>
+            </ol>
+            <p>Then use <code>W!cases (case id) ?e ?r new reason here</code> to edit.</p>
+
+            <hr>
+
+            <h3>HOW TO TIMEOUT AND REMOVE TIMEOUT</h3>
+            <p><code>W!timeout (user id) ?t TIME ?r Reason</code></p>
             <p><code>W!delttimeout (user id)</code></p>
+
+            <hr>
+
+            <h3>HOW TO BAN AND UNBAN</h3>
+            <p><code>W!ban (user id) ?r ban reason here</code></p>
+            <p><code>W!unban (user id) ?r reason for unban</code></p>
+
+            <hr>
+
+            <h3>HOW TO EDIT A BAN</h3>
+            <p>There is no way to edit a ban directly:</p>
+            <p>Unban then re-ban with new reason:</p>
+            <p><code>W!unban (user id) ?r reason for unban</code></p>
+            <p><code>W!ban (user id) ?r ban reason here</code></p>
+
+            <hr>
+
+            <h3>HOW TO MASS BAN, KICK, TIMEOUT</h3>
+            <p><code>W!kick USERid1 USERid2</code></p>
+            <p><code>W!ban USERID1 USERID2</code></p>
+            <p><code>W!timeout USERID1 USERID2 ?t TIME ?r Reason</code></p>
         </div>
     </div>
 
-    <div id="ban" class="section">
-        <div class="command-box">
-            <h3>Ban a User</h3>
-            <p><code>W!ban (user id) ?r reason</code> — ban a user.</p>
-            <p><code>W!hackban (user id)</code> — Ban user even when they are  not in server.</p>
-            <p><code>W!unban (user id) ?r reason</code> — Removes the  ban.</p>
-        </div>
-    </div>
-
-    <div id="mass" class="section">
-        <div class="command-box">
-            <h3>Mass Kick</h3>
-            <p><code>W!kick USERID1 USERID2</code>- mass kicks users</p>
-        </div>
-        <div class="command-box">  
-            <h3>Mass Ban</h3>
-            <p><code>W!Ban USERID1 USERID2 </code>-mass bans the users </p>
-        </div>
 </div>
 
 <div class="footer">
