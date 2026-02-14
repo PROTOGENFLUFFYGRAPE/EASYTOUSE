@@ -141,14 +141,6 @@ code {
 <body>
 
 <div class="sidebar">
-    <!-- CHEET SHEET GROUP -->
-    <h2>CHEET SHEET</h2>
-    <button onclick="showSection('cheet_reasons', this)">Reasons</button>
-    <button onclick="showSection('cheet_warns', this)">Warns</button>
-    <button onclick="showSection('cheet_bans', this)">Bans</button>
-    <button onclick="showSection('cheet_kicks', this)">Kicks</button>
-    <button onclick="showSection('cheet_timeouts', this)">Timeouts</button>
-
     <!-- COMMANDS GROUP -->
     <h2>COMMANDS</h2>
     <button onclick="showSection('info', this)">User Info</button>
@@ -231,15 +223,16 @@ code {
     <div id="ban" class="section">
         <div class="command-box">
             <h3>Ban a User</h3>
-            <p><code>W!ban (user id) ?r reason</code></p>
-            <p><code>W!hackban (user id)</code></p>
+            <p><code>W!ban (user id) ?r reason</code> — ban a user.</p>
+            <p><code>W!hackban (user id)</code> — Ban user even when they are  not in server.</p>
+            <p><code>W!unban (user id) ?r reason</code> — Removes the  ban.</p>
         </div>
     </div>
 
     <div id="mass" class="section">
         <div class="command-box">
             <h3>Mass Kick</h3>
-            <p><code>W!kick USERID1 USERID2</code></p>
+            <p><code>W!kick USERID1 USERID2</code>- mass kicks users</p>
         </div>
     </div>
 </div>
