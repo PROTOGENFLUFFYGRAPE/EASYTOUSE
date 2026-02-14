@@ -5,23 +5,81 @@
     <title>My Test Website</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+   <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #111;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            flex-direction: column;
-        }
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        height: 100vh;
+        background-color: #1e1e2f;
+        color: #e0e0e0;
+    }
+
+    /* Sidebar */
+    .sidebar {
+        width: 250px;
+        background-color: #2b2f4a;
+        padding: 20px;
+        border-right: 2px solid #3a3f63;
+    }
+
+    .sidebar h2 {
+        color: #4da3ff;
+        margin-bottom: 20px;
+        font-size: 18px;
+    }
+
+    .sidebar a {
+        display: block;
+        padding: 10px;
+        margin-bottom: 10px;
+        text-decoration: none;
+        color: #ccc;
+        background-color: #3a3f63;
+        border-radius: 6px;
+        transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+        background-color: #4da3ff;
+        color: white;
+    }
+
+    /* Main Content */
+    .content {
+        flex: 1;
+        padding: 40px;
+        overflow-y: auto;
+    }
+
+    h1 {
+        color: #4da3ff;
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        color: #6bb6ff;
+        margin-top: 30px;
+        margin-bottom: 10px;
+    }
+
+    .command-box {
+        background-color: #2b2f4a;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        border-left: 4px solid #4da3ff;
+    }
+
+    code {
+        color: #4da3ff;
+        font-weight: bold;
+    }
 
         h1 {
             color: #4CAF50;
@@ -44,17 +102,9 @@
     </style>
 </head>
 <body>
+    
 
-    <h1>Website is Working </h1>
-    <p>If you see this styled correctly, your HTML & CSS are working.</p>
 
-    <br>
-    <button onclick="testFunction()">Click Me</button>
-
-    <script>
-        function testFunction() {
-            alert("JavaScript is working!");
-        }
     </script>
 
 </body>
