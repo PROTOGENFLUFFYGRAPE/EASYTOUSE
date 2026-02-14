@@ -16,8 +16,16 @@ body {
     font-family: 'Segoe UI', sans-serif;
     display: flex;
     height: 100vh;
-    background: linear-gradient(135deg, #1e1e2f, #252542);
+    background: linear-gradient(-45deg, #1e1e2f, #252542, #1b2b4d, #1e1e2f);
+    background-size: 400% 400%;
+    animation: gradientMove 12s ease infinite;
     color: #e6e6e6;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 /* Sidebar */
