@@ -1,194 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>My Test Website</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wick Bot Commands</title>
 
-   <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    body {
-        font-family: Arial, sans-serif;
-        display: flex;
-        height: 100vh;
-        background-color: #1e1e2f;
-        color: #e0e0e0;
-    }
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    height: 100vh;
+    background-color: #1e1e2f;
+    color: #e0e0e0;
+}
 
-    /* Sidebar */
-    .sidebar {
-        width: 250px;
-        background-color: #2b2f4a;
-        padding: 20px;
-        border-right: 2px solid #3a3f63;
-    }
 
-    .sidebar h2 {
-        color: #4da3ff;
-        margin-bottom: 20px;
-        font-size: 18px;
-    }
+.sidebar {
+    width: 260px;
+    background-color: #2b2f4a;
+    padding: 20px;
+    border-right: 2px solid #3a3f63;
+}
 
-    .sidebar a {
-        display: block;
-        padding: 10px;
-        margin-bottom: 10px;
-        text-decoration: none;
-        color: #ccc;
-        background-color: #3a3f63;
-        border-radius: 6px;
-        transition: 0.3s;
-    }
+.sidebar h2 {
+    color: #4da3ff;
+    margin-bottom: 20px;
+}
 
-    .sidebar a:hover {
-        background-color: #4da3ff;
-        color: white;
-    }
+.sidebar button {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    background-color: #3a3f63;
+    border: none;
+    color: #ccc;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: left;
+}
 
-    /* Main Content */
-    .content {
-        flex: 1;
-        padding: 40px;
-        overflow-y: auto;
-    }
+.sidebar button:hover {
+    background-color: #4da3ff;
+    color: white;
+}
 
-    h1 {
-        color: #4da3ff;
-        margin-bottom: 20px;
-    }
+.sidebar button.active {
+    background-color: #4da3ff;
+    color: white;
+}
 
-    h2 {
-        color: #6bb6ff;
-        margin-top: 30px;
-        margin-bottom: 10px;
-    }
+.content {
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto;
+    position: relative;
+}
 
-    .command-box {
-        background-color: #2b2f4a;
-        padding: 15px;
-        border-radius: 8px;
-        margin-bottom: 15px;
-        border-left: 4px solid #4da3ff;
-    }
+.section {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    display: none;
+}
 
-    code {
-        color: #4da3ff;
-        font-weight: bold;
-    }
+.section.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
 
-        h1 {
-            color: #6bbcff;
-            margin-bottom: 20px;
-        }
+h1 {
+    color: #4da3ff;
+    margin-bottom: 20px;
+}
 
-        button {
-            padding: 10px 20px;
-            border: none;
-            background: #4CAF50;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
+.command-box {
+    background-color: #2b2f4a;
+    padding: 18px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border-left: 4px solid #4da3ff;
+}
 
-        button:hover {
-            background: #45a049;
-        }
-       .footer{
-       position:fixed;
-           bottom: 10px;
-           left: 15px;
-           font-size: 12px;
-           color: #888;
-       }
-       
-    </style>
+.command-box h3 {
+    margin-bottom: 10px;
+    color: #6bbcff;
+}
+
+code {
+    color: #6bbcff;
+    font-weight: bold;
+}
+
+
+.footer {
+    position: fixed;
+    bottom: 10px;
+    left: 15px;
+    font-size: 12px;
+    color: #888;
+}
+</style>
 </head>
 <body>
 
-    <div class="sidebar">
-        <h2>Discord Wick Bot Commands</h2>
-        <a href="#basic">Basic commands</a>
-        <a href="#editwarns">Edit warns</a>
-        <a href="#timeout">timeout</a>
-        <a href="#ban">ban and unban</a>
-        <a href="#mass">mass action</a>
-    </div>
-    <div class="content">
-        <h1>Discord Wick bot commands guide</h1>
-
-        <h2 id="basic">basic commands</h2>
-
-
-         <div class="command-box">
-        <p><code>W!i (user id)</code> — Shows information about the user.</p>
-        <p><code>W!cases</code> — Shows most recent cases.</p>
-        <p><code>W!cases (user id)</code> — Shows that user's cases.</p>
-        <p><code>W!warn (user id) ?r reason</code> — Warns the user.</p>
-        <p><code>W!kick (user id)</code> — Kicks the user.</p>
-        <p><code>W!timeout (user id) ?t time ?r reason</code> — Timeouts the user.</p>
-    </div>
-
-    <h2 id="editwarns">How To Edit Warns</h2>
-
-    <div class="command-box">
-        <p>1. Use <code>W!cases</code> to find the case ID.</p>
-        <p>OR</p>
-        <p>Use <code>W!cases (user id)</code> to see that user's cases.</p>
-        <br>
-        <p>Edit using:</p>
-        <p><code>W!cases (case id) ?e ?r new reason</code></p>
-    </div>
-
-    <h2 id="timeout">Timeout & Remove Timeout</h2>
-
-    <div class="command-box">
-        <p><code>W!timeout (user id) ?t TIME ?r reason</code></p>
-    </div>
-
-    <h2 id="ban">Ban & Unban</h2>
-
-    <div class="command-box">
-        <p><code>W!ban (user id) ?r reason</code> — Bans the user.</p>
-        <p><code>W!unban (user id) ?r reason</code> — Unbans the user.</p>
-        <br>
-        <p><strong>Editing a ban:</strong></p>
-        <p>You must unban then re-ban:</p>
-        <p><code>W!unban (user id) ?r reason</code></p>
-        <p><code>W!ban (user id) ?r new reason</code></p>
-    </div>
-
-    <h2 id="mass">Mass Kick / Ban / Timeout</h2>
-
-    <div class="command-box">
-        <p><code>W!kick USERID1 USERID2</code></p>
-        <p><code>W!ban USERID1 USERID2</code></p>
-        <p><code>W!timeout USERID1 USERID2 ?t TIME ?r reason</code></p>
-    </div>
-    </div>
+<div class="sidebar">
+    <h2>Wick Bot Commands</h2>
+    <button class="active" onclick="showSection('info', this)">User Info</button>
+    <button onclick="showSection('warns', this)">Warns</button>
+    <button onclick="showSection('timeout', this)">Timeout</button>
+    <button onclick="showSection('ban', this)">Ban Commands</button>
+    <button onclick="showSection('mass', this)">Mass Actions</button>
 </div>
 
-    <div class="footer">
-        WEBSITE AND LIST MADE BY PUMPKIN
+<div class="content">
+
+    <h1>Discord Wick Bot Guide</h1>
+
+    
+    <div id="info" class="section active">
+        <div class="command-box">
+            <h3>User Information</h3>
+            <p><code>W!i (user id)</code> — Gives info about the user ID.</p>
+            <p><code>W!cases</code> — Shows the most recent cases.</p>
+            <p><code>W!cases (user id)</code> — Shows that user's cases.</p>
+        </div>
     </div>
- <script>
-     function showSection(sectionId {
-         const sections = document.querySelectorAll('.section');
-         sections.forEach(section => {
-             section.classList.remove('active')'
-                 
-     });
-         document.getElementById(sectionid).classlist.add('active');
-     }
- </script>
 
+    
+    <div id="warns" class="section">
+        <div class="command-box">
+            <h3>Warn a User</h3>
+            <p><code>W!warn (user id) ?r reason</code> — Warns the user.</p>
+        </div>
 
+        <div class="command-box">
+            <h3>Edit Warns</h3>
+            <p>1. Use <code>W!cases</code> to see recent cases.</p>
+            <p>OR</p>
+            <p><code>W!cases (user id)</code> to see that user’s cases.</p>
+            <br>
+            <p>Edit using:</p>
+            <p><code>W!cases (case id) ?e ?r new reason</code></p>
+        </div>
+    </div>
 
+    
+    <div id="timeout" class="section">
+        <div class="command-box">
+            <h3>Timeout User</h3>
+            <p><code>W!timeout (user id) ?t TIME ?r reason</code></p>
+        </div>
+    </div>
+
+    
+    <div id="ban" class="section">
+        <div class="command-box">
+            <h3>Ban User</h3>
+            <p><code>W!ban (user id) ?r reason</code> — Bans the user.</p>
+            <p><code>W!hackban (user id)</code> — Bans a user not in the server.</p>
+        </div>
+
+        <div class="command-box">
+            <h3>Unban User</h3>
+            <p><code>W!unban (user id) ?r reason</code> — Unbans the user.</p>
+        </div>
+
+        <div class="command-box">
+            <h3>Edit a Ban</h3>
+            <p>There is no direct way to edit a ban.</p>
+            <p>You must:</p>
+            <p><code>W!unban (user id) ?r reason</code></p>
+            <p>Then:</p>
+            <p><code>W!ban (user id) ?r new reason</code></p>
+        </div>
+    </div>
+
+    
+    <div id="mass" class="section">
+        <div class="command-box">
+            <h3>Mass Kick</h3>
+            <p><code>W!kick USERID1 USERID2</code></p>
+        </div>
+
+        <div class="command-box">
+            <h3>Mass Ban</h3>
+            <p><code>W!ban USERID1 USERID2</code></p>
+        </div>
+
+        <div class="command-box">
+            <h3>Mass Timeout</h3>
+            <p><code>W!timeout USERID1 USERID2 ?t TIME ?r reason</code></p>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    Made by Pumpkin
+</div>
+
+<script>
+function showSection(id, button) {
+    document.querySelectorAll('.section').forEach(section => {
+        section.classList.remove('active');
+    });
+
+    document.querySelectorAll('.sidebar button').forEach(btn => {
+        btn.classList.remove('active');
+    });
+
+    document.getElementById(id).classList.add('active');
+    button.classList.add('active');
+}
 </script>
 
 </body>
