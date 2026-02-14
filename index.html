@@ -58,14 +58,14 @@ body {
 
 .sidebar button:hover {
     background: #4da3ff;
-    transform: translateX(5px);
+    transform: translateX(6px);
     color: white;
 }
 
 .sidebar button.active {
     background: #4da3ff;
     color: white;
-    box-shadow: 0 0 10px #4da3ff;
+    box-shadow: 0 0 15px #4da3ff;
 }
 
 /* Content */
@@ -77,7 +77,7 @@ body {
 
 .section {
     opacity: 0;
-    transform: translateY(15px);
+    transform: translateY(20px);
     transition: opacity 0.4s ease, transform 0.4s ease;
     display: none;
 }
@@ -91,6 +91,8 @@ body {
 h1 {
     color: #6bbcff;
     margin-bottom: 30px;
+    font-size: 32px;
+    letter-spacing: 1px;
 }
 
 .command-box {
@@ -104,8 +106,8 @@ h1 {
 }
 
 .command-box:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 20px rgba(77,163,255,0.4);
+    transform: translateY(-6px);
+    box-shadow: 0 0 25px rgba(77,163,255,0.5);
 }
 
 .command-box h3 {
@@ -135,7 +137,8 @@ code {
 
 <div class="sidebar">
     <h2>COMMANDS</h2>
-    <button class="active" onclick="showSection('info', this)">User Info</button>
+    <button class="active" onclick="showSection('help', this)">Help</button>
+    <button onclick="showSection('info', this)">User Info</button>
     <button onclick="showSection('warns', this)">Warns</button>
     <button onclick="showSection('timeout', this)">Timeout</button>
     <button onclick="showSection('ban', this)">Ban Commands</button>
@@ -145,12 +148,33 @@ code {
 <div class="content">
     <h1>Discord Wick Bot Guide</h1>
 
+    <!-- HELP -->
+    <div id="help" class="section active">
+        <h1>CHEET SHEET</h1>
+
+        <div class="command-box">
+            <h3>Quick Overview</h3>
+            <p><code>W!warn</code> — Warns a user.</p>
+            <p><code>W!timeout</code> — Temporarily mutes a user.</p>
+            <p><code>W!ban</code> — Permanently bans a user.</p>
+            <p><code>W!kick</code> — Removes a user from the server.</p>
+            <p><code>W!cases</code> — View moderation logs.</p>
+        </div>
+
+        <div class="command-box">
+            <h3>Syntax Help</h3>
+            <p><code>?r</code> = Reason</p>
+            <p><code>?t</code> = Time</p>
+            <p><code>(user id)</code> = Target user's Discord ID</p>
+        </div>
+    </div>
+
     <!-- USER INFO -->
-    <div id="info" class="section active">
+    <div id="info" class="section">
         <div class="command-box">
             <h3>User Info</h3>
-            <p><code>W!i (user id)</code> — Displays detailed information about a specific user ID including account and server data.</p>
-            <p><code>W!cases</code> — Shows the most recent moderation cases in the server.</p>
+            <p><code>W!i (user id)</code> — Displays detailed information about a specific user.</p>
+            <p><code>W!cases</code> — Shows the most recent moderation cases.</p>
             <p><code>W!cases (user id)</code> — Shows all moderation cases related to that user.</p>
         </div>
     </div>
@@ -159,57 +183,45 @@ code {
     <div id="warns" class="section">
         <div class="command-box">
             <h3>Warn a User</h3>
-            <p><code>W!warn (user id) ?r reason</code> — Issues a warning to a user and logs it into moderation cases.</p>
+            <p><code>W!warn (user id) ?r reason</code> — Issues a warning to a user.</p>
         </div>
 
         <div class="command-box">
             <h3>Edit a Warning</h3>
-            <p>Use <code>W!cases</code> or <code>W!cases (user id)</code> to find the case ID.</p>
-            <p><code>W!cases (case id) ?e ?r new reason</code> — Edits the reason of a warning case.</p>
+            <p>Use <code>W!cases</code> to find case ID.</p>
+            <p><code>W!cases (case id) ?e ?r new reason</code> — Edits a warning.</p>
         </div>
     </div>
 
     <!-- TIMEOUT -->
     <div id="timeout" class="section">
-    
-    <div class="command-box">
-        <h3>Timeout a User</h3>
-        <p>
-            <code>W!timeout (user id) ?t TIME ?r reason</code> — 
-            Temporarily restricts a user from chatting for the specified time.
-        </p>
+        <div class="command-box">
+            <h3>Timeout a User</h3>
+            <p><code>W!timeout (user id) ?t TIME ?r reason</code> — Times the user out.</p>
+        </div>
+
+        <div class="command-box">
+            <h3>Remove a Timeout</h3>
+            <p><code>W!delttimeout (user id)</code> — Removes the timeout.</p>
+        </div>
     </div>
-
-    <div class="command-box">
-        <h3>Remove a Timeout</h3>
-        <p>
-            <code>W!delttimeout (user id)</code> — 
-            Removes the active timeout from the user.
-        </p>
-    </div>
-
-</div>
-
 
     <!-- BAN -->
     <div id="ban" class="section">
         <div class="command-box">
             <h3>Ban a User</h3>
-            <p><code>W!ban (user id) ?r reason</code> — Permanently bans the user from the server.</p>
-            <p><code>W!hackban (user id)</code> — Bans a user even if they are not currently in the server.</p>
+            <p><code>W!ban (user id) ?r reason</code> — Permanently bans the user.</p>
+            <p><code>W!hackban (user id)</code> — Bans user not in server.</p>
         </div>
 
         <div class="command-box">
             <h3>Unban a User</h3>
-            <p><code>W!unban (user id) ?r reason</code> — Removes a ban from a user allowing them to rejoin.</p>
+            <p><code>W!unban (user id) ?r reason</code> — Removes a ban.</p>
         </div>
 
         <div class="command-box">
             <h3>Edit a Ban</h3>
-            <p>Bans cannot be directly edited.</p>
-            <p>You must unban and re-ban with a new reason:</p>
-            <p><code>W!unban (user id) ?r reason</code></p>
-            <p><code>W!ban (user id) ?r new reason</code></p>
+            <p>You must unban then re-ban with new reason.</p>
         </div>
     </div>
 
@@ -217,24 +229,24 @@ code {
     <div id="mass" class="section">
         <div class="command-box">
             <h3>Mass Kick</h3>
-            <p><code>W!kick USERID1 USERID2</code> — Kicks multiple users at once.</p>
+            <p><code>W!kick USERID1 USERID2</code></p>
         </div>
 
         <div class="command-box">
             <h3>Mass Ban</h3>
-            <p><code>W!ban USERID1 USERID2</code> — Bans multiple users at once.</p>
+            <p><code>W!ban USERID1 USERID2</code></p>
         </div>
 
         <div class="command-box">
             <h3>Mass Timeout</h3>
-            <p><code>W!timeout USERID1 USERID2 ?t TIME ?r reason</code> — Timeouts multiple users at once.</p>
+            <p><code>W!timeout USERID1 USERID2 ?t TIME ?r reason</code></p>
         </div>
     </div>
 
 </div>
 
 <div class="footer">
-    Made by Pumpkin
+    Website and cheet sheet Made by Pumpkin
 </div>
 
 <script>
