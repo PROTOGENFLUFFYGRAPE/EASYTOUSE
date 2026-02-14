@@ -13,60 +13,64 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', sans-serif;
     display: flex;
     height: 100vh;
-    background-color: #1e1e2f;
-    color: #e0e0e0;
+    background: linear-gradient(135deg, #1e1e2f, #252542);
+    color: #e6e6e6;
 }
 
-
+/* Sidebar */
 .sidebar {
     width: 260px;
-    background-color: #2b2f4a;
+    background: rgba(43, 47, 74, 0.9);
+    backdrop-filter: blur(10px);
     padding: 20px;
-    border-right: 2px solid #3a3f63;
+    border-right: 1px solid #3f4670;
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
 }
 
 .sidebar h2 {
-    color: #4da3ff;
-    margin-bottom: 20px;
+    color: #6bbcff;
+    margin-bottom: 25px;
 }
 
 .sidebar button {
     width: 100%;
     padding: 12px;
-    margin-bottom: 10px;
-    background-color: #3a3f63;
+    margin-bottom: 12px;
+    background: #3a3f63;
     border: none;
     color: #ccc;
-    border-radius: 6px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: all 0.3s ease;
     text-align: left;
 }
 
 .sidebar button:hover {
-    background-color: #4da3ff;
+    background: #4da3ff;
+    transform: translateX(5px);
     color: white;
 }
 
 .sidebar button.active {
-    background-color: #4da3ff;
+    background: #4da3ff;
     color: white;
+    box-shadow: 0 0 10px #4da3ff;
 }
 
+/* Content */
 .content {
     flex: 1;
     padding: 40px;
     overflow-y: auto;
-    position: relative;
 }
 
 .section {
     opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateY(15px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
     display: none;
 }
 
@@ -77,16 +81,23 @@ body {
 }
 
 h1 {
-    color: #4da3ff;
-    margin-bottom: 20px;
+    color: #6bbcff;
+    margin-bottom: 30px;
 }
 
 .command-box {
-    background-color: #2b2f4a;
-    padding: 18px;
-    border-radius: 8px;
+    background: rgba(43, 47, 74, 0.85);
+    padding: 20px;
+    border-radius: 12px;
     margin-bottom: 20px;
     border-left: 4px solid #4da3ff;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.command-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(77,163,255,0.4);
 }
 
 .command-box h3 {
@@ -97,15 +108,18 @@ h1 {
 code {
     color: #6bbcff;
     font-weight: bold;
+    background: rgba(0,0,0,0.3);
+    padding: 3px 6px;
+    border-radius: 4px;
 }
 
-
+/* Footer */
 .footer {
     position: fixed;
-    bottom: 10px;
-    left: 15px;
+    bottom: 12px;
+    left: 18px;
     font-size: 12px;
-    color: #888;
+    color: #999;
 }
 </style>
 </head>
@@ -121,83 +135,77 @@ code {
 </div>
 
 <div class="content">
-
     <h1>Discord Wick Bot Guide</h1>
 
-    
+    <!-- USER INFO -->
     <div id="info" class="section active">
         <div class="command-box">
-            <h3>User Information</h3>
-            <p><code>W!i (user id)</code> — Gives info about the user ID.</p>
-            <p><code>W!cases</code> — Shows the most recent cases.</p>
-            <p><code>W!cases (user id)</code> — Shows that user's cases.</p>
+            <h3>User Info</h3>
+            <p><code>W!i (user id)</code> — Displays detailed information about a specific user ID including account and server data.</p>
+            <p><code>W!cases</code> — Shows the most recent moderation cases in the server.</p>
+            <p><code>W!cases (user id)</code> — Shows all moderation cases related to that user.</p>
         </div>
     </div>
 
-    
+    <!-- WARNS -->
     <div id="warns" class="section">
         <div class="command-box">
             <h3>Warn a User</h3>
-            <p><code>W!warn (user id) ?r reason</code> — Warns the user.</p>
+            <p><code>W!warn (user id) ?r reason</code> — Issues a warning to a user and logs it into moderation cases.</p>
         </div>
 
         <div class="command-box">
-            <h3>Edit Warns</h3>
-            <p>1. Use <code>W!cases</code> to see recent cases.</p>
-            <p>OR</p>
-            <p><code>W!cases (user id)</code> to see that user’s cases.</p>
-            <br>
-            <p>Edit using:</p>
-            <p><code>W!cases (case id) ?e ?r new reason</code></p>
+            <h3>Edit a Warning</h3>
+            <p>Use <code>W!cases</code> or <code>W!cases (user id)</code> to find the case ID.</p>
+            <p><code>W!cases (case id) ?e ?r new reason</code> — Edits the reason of a warning case.</p>
         </div>
     </div>
 
-    
+    <!-- TIMEOUT -->
     <div id="timeout" class="section">
         <div class="command-box">
-            <h3>Timeout User</h3>
-            <p><code>W!timeout (user id) ?t TIME ?r reason</code></p>
+            <h3>Timeout a User</h3>
+            <p><code>W!timeout (user id) ?t TIME ?r reason</code> — Temporarily restricts a user from chatting for a set amount of time.</p>
         </div>
     </div>
 
-    
+    <!-- BAN -->
     <div id="ban" class="section">
         <div class="command-box">
-            <h3>Ban User</h3>
-            <p><code>W!ban (user id) ?r reason</code> — Bans the user.</p>
-            <p><code>W!hackban (user id)</code> — Bans a user not in the server.</p>
+            <h3>Ban a User</h3>
+            <p><code>W!ban (user id) ?r reason</code> — Permanently bans the user from the server.</p>
+            <p><code>W!hackban (user id)</code> — Bans a user even if they are not currently in the server.</p>
         </div>
 
         <div class="command-box">
-            <h3>Unban User</h3>
-            <p><code>W!unban (user id) ?r reason</code> — Unbans the user.</p>
+            <h3>Unban a User</h3>
+            <p><code>W!unban (user id) ?r reason</code> — Removes a ban from a user allowing them to rejoin.</p>
         </div>
 
         <div class="command-box">
             <h3>Edit a Ban</h3>
-            <p>There is no direct way to edit a ban.</p>
-            <p>You must:</p>
+            <p>Bans cannot be directly edited.</p>
+            <p>You must unban and re-ban with a new reason:</p>
             <p><code>W!unban (user id) ?r reason</code></p>
-            <p>Then:</p>
             <p><code>W!ban (user id) ?r new reason</code></p>
         </div>
     </div>
 
-    
+    <!-- MASS -->
     <div id="mass" class="section">
         <div class="command-box">
             <h3>Mass Kick</h3>
-            <p><code>W!kick USERID1 USERID2</code></p>
+            <p><code>W!kick USERID1 USERID2</code> — Kicks multiple users at once.</p>
         </div>
 
         <div class="command-box">
             <h3>Mass Ban</h3>
-            <p><code>W!ban USERID1 USERID2</code></p>
+            <p><code>W!ban USERID1 USERID2</code> — Bans multiple users at once.</p>
         </div>
 
         <div class="command-box">
             <h3>Mass Timeout</h3>
-            <p><code>W!timeout USERID1 USERID2 ?t TIME ?r reason</code></p>
+            <p><code>W!timeout USERID1 USERID2 ?t TIME ?r reason</code> — Timeouts multiple users at once.</p>
         </div>
     </div>
 
